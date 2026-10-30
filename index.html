@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seven Art Studios — Portfólio</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light;--bg:#f4f6fa;--tx:#0c2340;--mu:#4d5f78;--ac:#0b58a8;--ac2:#3375bb;--ac3:#a5c8f0;--ed:rgba(11,88,168,.16);--r:24px;--f1:"Manrope",system-ui,-apple-system,sans-serif;--f2:"Manrope",system-ui,-apple-system,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.65 var(--f2);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(55% 45% at 85% 0%,rgba(165,200,240,.5),transparent 70%),radial-gradient(45% 40% at 0% 45%,rgba(51,117,187,.1),transparent 70%)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+h1,h2,h3{font-family:var(--f1);font-weight:400;line-height:1.05}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);margin:56px 0 20px}
+p{color:var(--mu);max-width:62ch}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+/* vidro */
+.glass{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.04));border:1px solid var(--ed);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(255,255,255,.05),0 14px 44px rgba(0,0,0,.38);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--mx,25%) var(--my,0%),rgba(255,255,255,.2),transparent 55%);opacity:.55}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(38,40,46,.94)}}
+/* navegação */
+.bar{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--ac);transform:scaleX(0);transform-origin:left;z-index:60}
+.nav{position:fixed;z-index:50;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);width:min(760px,100% - 24px);display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 20px;border-radius:999px}
+.logo{font:800 .95rem var(--f2);letter-spacing:.14em}.logo i{font:italic 400 1.15rem var(--f1);letter-spacing:0;margin-left:5px;color:var(--ac)}
+.nav nav{display:flex;gap:4px}
+.nav nav a{padding:8px 16px;border-radius:999px;font-size:.92rem;color:var(--mu);transition:background .25s,color .25s}
+.nav nav a:hover,.nav nav a.on{background:rgba(255,255,255,.12);color:var(--tx)}
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--ed);background:rgba(255,255,255,.08);color:var(--tx);cursor:pointer;font-size:1.1rem}
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font:600 .95rem var(--f2);color:var(--tx);cursor:pointer;border:1px solid var(--ed);transition:transform .25s,background .25s,box-shadow .25s;overflow:hidden}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.97)}
+.btn.p{background:linear-gradient(180deg,rgba(168,184,255,.5),rgba(142,162,255,.22));border-color:rgba(190,202,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 30px rgba(142,162,255,.25)}
+.btn.s{background:rgba(255,255,255,.07)}
+.btn.s:hover{background:rgba(255,255,255,.14)}
+/* hero */
+.hero{min-height:100svh;display:grid;align-items:center;padding:120px 0 60px}
+.hg{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.8rem,7vw,5.6rem);letter-spacing:-.02em;margin-bottom:22px}
+.hero h1 em{color:var(--ac)}
+.hero p{font-size:1.1rem;margin-bottom:32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stage{position:relative;aspect-ratio:1/1;max-width:540px;width:100%;margin-inline:auto;touch-action:pan-y}
+.big{position:absolute;inset:0;display:grid;place-items:center;font:italic 400 clamp(9rem,26vw,19rem)/1 var(--f1);background:linear-gradient(160deg,#fff,#8c93a6 55%,#3b3f4d);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.04em;user-select:none}
+.lens{position:absolute;width:44%;aspect-ratio:1;left:calc(var(--lx,52%) - 22%);top:calc(var(--ly,40%) - 22%);border-radius:50%;border:1px solid rgba(255,255,255,.45);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.4),rgba(255,255,255,.03) 55%);-webkit-backdrop-filter:blur(5px) brightness(1.5) saturate(2);backdrop-filter:blur(5px) brightness(1.5) saturate(2);box-shadow:inset 0 2px 1px rgba(255,255,255,.6),inset 0 -14px 30px rgba(142,162,255,.35),0 24px 50px rgba(0,0,0,.45);transition:left .35s ease-out,top .35s ease-out}
+.chip{position:absolute;padding:12px 16px;border-radius:18px;display:flex;gap:7px;align-items:center;font-size:.8rem;color:var(--mu)}
+.chip i{width:20px;height:20px;border-radius:50%;border:1px solid var(--ed)}
+.chip.a{left:0;bottom:12%}.chip.b{right:2%;top:6%;font:italic 1.5rem var(--f1);color:var(--tx)}
+/* seções */
+section{padding:30px 0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;padding:8px;border-radius:26px;width:fit-content;max-width:100%;margin-bottom:26px}
+.filters button{padding:10px 18px;border-radius:999px;border:1px solid transparent;background:transparent;color:var(--mu);font:600 .88rem var(--f2);cursor:pointer;transition:all .25s}
+.filters button:hover{color:var(--tx);background:rgba(255,255,255,.08)}
+.filters button[aria-pressed=true]{color:#0d0e11;background:var(--tx);box-shadow:0 4px 16px rgba(255,255,255,.2)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:330px;gap:18px;transition:opacity .2s,transform .2s}
+.grid.out{opacity:0;transform:translateY(10px)}
+.card{position:relative;grid-column:span 4;border-radius:var(--r);overflow:hidden;border:1px solid var(--ed);background:#16171a;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s,box-shadow .35s}
+.card:nth-child(5n+1){grid-column:span 7}.card:nth-child(5n+2){grid-column:span 5}
+.card:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.015);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .art{transform:scale(1.05)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.16),transparent 50%)}
+.cap{position:absolute;z-index:2;left:14px;right:14px;bottom:14px;padding:14px 18px;border-radius:18px;transform:translateY(calc(100% - 52px));transition:transform .35s}
+.card:hover .cap,.card:focus-visible .cap{transform:none}
+.cap h3{font-size:1.5rem}.cap small{display:block;color:var(--mu);font-size:.8rem}.cap p{font-size:.88rem;margin-top:8px}
+@media(hover:none){.cap{transform:none}}
+.ph{display:grid;place-content:center;gap:6px;text-align:center;padding:20px;background:radial-gradient(circle at 20% 15%,hsl(var(--a) 75% 58% / .85),transparent 58%),radial-gradient(circle at 85% 90%,hsl(var(--b) 65% 42% / .9),transparent 58%),#16171a}
+.ph b{font:italic 400 clamp(4rem,10vw,7rem)/1 var(--f1);color:rgba(255,255,255,.92)}
+.ph small{font-size:.78rem;color:rgba(255,255,255,.85);max-width:24ch;margin-inline:auto}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.svc{padding:24px;border-radius:var(--r);display:grid;gap:10px;list-style:none}
+.svc li{padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.06)}
+form{display:grid;gap:12px;padding:26px;border-radius:var(--r);max-width:620px}
+label{font-size:.85rem;color:var(--mu);display:grid;gap:6px}
+input,textarea{font:inherit;color:var(--tx);background:rgba(0,0,0,.3);border:1px solid var(--ed);border-radius:14px;padding:12px 14px;width:100%}
+textarea{min-height:120px;resize:vertical}
+#st{font-size:.88rem;min-height:1.4em;color:var(--ac)}
+footer{padding:50px 0 110px;color:var(--mu);font-size:.88rem;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+footer nav{display:flex;gap:16px;flex-wrap:wrap}
+.wa{position:fixed;z-index:40;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);padding:14px 20px;border-radius:999px;font-weight:600;font-size:.92rem;background:linear-gradient(180deg,rgba(70,200,130,.55),rgba(30,150,90,.35));border-color:rgba(150,240,190,.5)}
+/* estudo de caso */
+.back{display:inline-block;margin:110px 0 18px;padding:10px 20px;border-radius:999px;font-size:.9rem}
+.chero{position:relative;aspect-ratio:16/8;border-radius:var(--r);overflow:hidden;border:1px solid var(--ed)}
+.tt{position:absolute;left:18px;bottom:18px;padding:16px 24px;border-radius:20px}
+.tt h1{font-size:clamp(1.8rem,4vw,3rem)}.tt small{color:var(--mu)}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.pn{padding:24px;border-radius:var(--r)}.pn h3{font-size:1.5rem;margin-bottom:8px}
+.pal{display:flex;flex-wrap:wrap;gap:14px}
+.pal div{width:128px}.pal i{display:block;height:84px;border-radius:18px;border:1px solid var(--ed)}.pal code{font-size:.85rem;color:var(--mu)}
+.apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.apps figure{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:1px solid var(--ed)}
+.apps figcaption{position:absolute;left:10px;bottom:10px;padding:5px 14px;border-radius:999px;font-size:.8rem;z-index:2}
+.car{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--ed)}
+.trk{display:flex;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.sl{position:relative;flex:0 0 100%;aspect-ratio:16/8}
+.cn{position:absolute;z-index:3;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px}
+.cn button{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:var(--tx);cursor:pointer;font-size:1rem}
+.cn span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35)}.cn span.on{background:var(--tx)}
+.oth{display:flex;flex-wrap:wrap;gap:10px}.oth a{padding:10px 18px;border-radius:999px;font-size:.9rem}
+.oth a:hover{background:rgba(255,255,255,.14)}
+/* animações */
+@keyframes up{from{opacity:0;transform:translateY(22px)}}
+.hero .hg>div:first-child>*{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .hg>div:first-child>*:nth-child(2){animation-delay:.12s}.hero .hg>div:first-child>*:nth-child(3){animation-delay:.24s}
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}.js .rv.in{opacity:1;transform:none}
+@media(max-width:860px){
+.nav nav{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;padding:10px;border-radius:24px;background:rgba(28,30,36,.82);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid var(--ed)}
+.nav nav.open{display:flex}.nav nav a{padding:14px 16px}.burger{display:block}
+.hg,.about,.info{grid-template-columns:1fr}
+.grid{grid-auto-rows:280px}.card,.card:nth-child(n){grid-column:span 12}
+.chero,.sl{aspect-ratio:4/3}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+/* tema claro + identidade Seven art Studios */
+h1,h2,h3{font-weight:800;letter-spacing:-.025em;line-height:1.08}
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.78),rgba(255,255,255,.46));box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(11,88,168,.05),0 8px 28px rgba(20,60,110,.1);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4)}
+.glass::before{background:radial-gradient(circle at var(--mx,25%) var(--my,0%),rgba(255,255,255,.75),transparent 55%);opacity:.5}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(250,251,253,.97)}}
+.logo{display:block;line-height:0}.logo img{height:30px;width:auto;display:block}
+.nav{padding:8px 8px 8px 18px}
+.nav nav a:hover,.nav nav a.on{background:rgba(11,88,168,.09);color:var(--ac)}
+.burger{background:rgba(255,255,255,.7)}
+.btn.p{color:#fff;background:linear-gradient(180deg,var(--ac2),var(--ac));border-color:rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 8px 22px rgba(11,88,168,.28)}
+.btn.s{background:rgba(255,255,255,.65)}.btn.s:hover{background:#fff}
+.hero h1 em{font-style:normal;color:var(--ac)}
+.big{width:100%;height:100%;object-fit:contain;padding:6%;background:none;display:block}
+.lens{border-color:rgba(255,255,255,.85);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.65),rgba(255,255,255,.05) 55%);-webkit-backdrop-filter:blur(4px) brightness(1.1) saturate(1.7);backdrop-filter:blur(4px) brightness(1.1) saturate(1.7);box-shadow:inset 0 2px 1px rgba(255,255,255,.95),inset 0 -14px 30px rgba(51,117,187,.25),0 18px 40px rgba(11,88,168,.2)}
+.chip.a{left:auto;right:0;bottom:6%}.chip.b{right:auto;left:2%;top:4%;font:800 1.3rem var(--f1);color:var(--ac)}
+.filters button:hover{background:rgba(11,88,168,.07)}
+.filters button[aria-pressed=true]{color:#fff;background:linear-gradient(180deg,var(--ac2),var(--ac));box-shadow:0 4px 14px rgba(11,88,168,.3)}
+.card{background:#fff}.card:hover{box-shadow:0 22px 48px rgba(20,60,110,.18)}
+.ph{background:radial-gradient(circle at 20% 15%,hsl(var(--a) 80% 78% / .95),transparent 60%),radial-gradient(circle at 85% 90%,hsl(var(--b) 75% 70% / .95),transparent 60%),#eef2f8}
+.ph b{font:800 clamp(4rem,10vw,7rem)/1 var(--f1);color:rgba(12,35,64,.82)}.ph small{color:var(--mu)}
+.svc li{background:rgba(11,88,168,.05);display:flex;gap:12px;align-items:center}
+.svc li::before{content:"";flex:none;width:14px;height:14px;background:url("assets/image-891b1e15b4ec667c.svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233375bb' d='M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12C7 11 11 7 12 0z'/%3E%3C/svg%3E") center/contain no-repeat}
+input,textarea{background:rgba(255,255,255,.85)}
+.wa{color:#fff;background:linear-gradient(180deg,#1fa863,#12864a);border-color:rgba(255,255,255,.5);box-shadow:0 8px 22px rgba(18,134,74,.32)}
+.cn button{background:rgba(11,88,168,.08)}.cn span{background:rgba(11,88,168,.25)}.cn span.on{background:var(--ac)}
+.oth a:hover{background:rgba(11,88,168,.09)}
+.fl{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.fl img{height:22px;width:auto;display:block}
+@media(max-width:860px){.nav nav{background:rgba(250,251,253,.94)}}
+/* projetos reais, paleta e lightbox */
+.card.lg{background:radial-gradient(circle at 25% 15%,hsl(var(--a) 60% 94%),transparent 65%),radial-gradient(circle at 85% 90%,hsl(var(--b) 55% 90%),transparent 60%),#f4f6fa}
+.card.lg .art{object-fit:contain;padding:8% 8% 24%}
+.st{display:block}.hb{all:unset;box-sizing:border-box;position:absolute;inset:0;display:grid;place-items:center;padding:3%;cursor:zoom-in;background:radial-gradient(circle at 25% 15%,hsl(var(--a) 60% 94%),transparent 65%),radial-gradient(circle at 85% 90%,hsl(var(--b) 55% 90%),transparent 60%),#f4f6fa}
+.hb img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(12,35,64,.22))}
+.ap{all:unset;box-sizing:border-box;display:block;width:100%;height:100%;cursor:zoom-in;background:radial-gradient(circle at 20% 10%,hsl(var(--a,215) 60% 95%),#eef2f8)}
+.ap img{width:100%;height:100%;object-fit:contain;transition:transform .5s}.ap:hover img{transform:scale(1.04)}
+.pal .sw{width:142px;display:grid;gap:3px;text-align:left;padding:8px;border-radius:18px;border:1px solid var(--ed);background:rgba(255,255,255,.7);color:var(--tx);font:inherit;cursor:pointer;transition:transform .25s}
+.sw:hover{transform:translateY(-2px)}.sw i{height:66px}.sw b{font-size:.9rem}.sw code,.sw small{font-size:.76rem;color:var(--mu)}
+.nt{margin-top:12px;font-size:.88rem}
+.lb{position:fixed;inset:0;z-index:100;display:grid;grid-template-rows:minmax(0,1fr) auto;background:rgba(236,241,248,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.lb[hidden]{display:none}
+.lbst{overflow:hidden;display:grid;place-items:center;margin:calc(env(safe-area-inset-top,0px) + 12px) 12px 10px;border-radius:var(--r);background:#fff;border:1px solid var(--ed)}
+.lb.pr .lbst{background:radial-gradient(circle at 25% 15%,hsl(var(--a) 70% 90%),transparent 65%),radial-gradient(circle at 85% 90%,hsl(var(--b) 60% 84%),transparent 60%),#eef2f8}
+#lbi{max-width:96%;max-height:96%;object-fit:contain;touch-action:none;user-select:none;cursor:zoom-in;transition:transform .15s}
+.lb.pr #lbi{filter:drop-shadow(0 28px 30px rgba(12,35,64,.28))}
+.lbt{margin:0 auto calc(env(safe-area-inset-bottom,0px) + 14px);display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;padding:8px 10px;border-radius:26px;max-width:calc(100% - 24px)}
+.lbt button{min-width:42px;height:42px;padding:0 14px;border-radius:999px;border:1px solid var(--ed);background:rgba(255,255,255,.75);color:var(--tx);font:600 .9rem var(--f2);cursor:pointer}
+.lbt button:hover{background:#fff}.lbt button[hidden]{display:none}.lbt span{font-size:.82rem;color:var(--mu);padding:0 8px}
+/* apresentação e espaços reservados */
+.me{grid-template-columns:minmax(260px,.75fr) 1.25fr;align-items:center}
+.ph-o{display:block;width:100%;max-width:400px;padding:8px;border-radius:var(--r);cursor:zoom-in;font:inherit}
+.ph-o img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;border-radius:calc(var(--r) - 8px)}
+.role{margin:4px 0 14px;font-weight:600;color:var(--ac)}
+.apps figure.slot{border-color:transparent}
+.ph-s{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:4px;border:1.5px dashed rgba(11,88,168,.35);border-radius:20px;background:radial-gradient(circle at 20% 10%,hsl(var(--a,215) 60% 96%),#f4f6fa);color:var(--mu)}
+.ph-s b{font:300 2.2rem/1 var(--f2);color:var(--ac)}.ph-s small{font-size:.78rem}
+@media(max-width:860px){.me{grid-template-columns:1fr}.ph-o{max-width:320px}}
+/* cards estilo cartão de contato */
+.grid{grid-auto-rows:auto;grid-auto-flow:dense;gap:22px}
+.grid .card:nth-child(n){grid-column:span 4}.grid .card.wd:nth-child(n){grid-column:span 8}
+.card{display:grid;gap:10px;padding:10px;border-radius:32px;background:#fff;border:1px solid rgba(11,88,168,.1);box-shadow:0 12px 34px rgba(20,60,110,.12),inset 0 1px 0 #fff}
+.card.lg{background:#fff}.card:hover{box-shadow:0 22px 50px rgba(20,60,110,.2)}
+.cm{position:relative;height:420px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,hsl(var(--a) 25% 95%),hsl(var(--b) 70% 76%))}
+.card.lg .art{padding:7%}
+.sh{position:absolute;z-index:2;top:12px;right:12px;width:42px;height:42px;display:grid;place-items:center;border-radius:14px;font-size:1.15rem;color:var(--tx);background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.cf{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 8px 6px 10px}.cf>div{min-width:0}
+.cf h3{font:800 1.05rem/1.25 var(--f1);letter-spacing:-.01em}
+.cf small{display:flex;align-items:center;gap:7px;color:var(--mu);font-size:.8rem;margin-top:2px}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:hsl(var(--a) 70% 48%)}
+.cb{flex:none;padding:11px 18px;border-radius:16px;background:#14171c;color:#fff;font:600 .85rem var(--f2);transition:background .25s}.card:hover .cb{background:var(--ac)}
+/* apresentação: composição com pílulas flutuantes */
+.me{grid-template-columns:1.1fr 1fr}
+#ownn{font-size:clamp(2rem,4vw,3rem)}
+.pst{position:relative;aspect-ratio:1.12;width:100%;max-width:610px}
+.pbk{position:absolute;left:13%;top:2%;width:57%;height:90%;border-radius:46px;background:#0c2340}
+.pph{all:unset;box-sizing:border-box;position:absolute;left:19%;top:7%;width:57%;height:90%;overflow:hidden;border-radius:46px;cursor:zoom-in;box-shadow:0 22px 50px rgba(12,35,64,.28)}
+.pph img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+.pbd{position:absolute;left:1%;top:3%;width:22%;aspect-ratio:1;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 28px rgba(20,60,110,.18)}
+.pbd img{width:58%}.pbd i{position:absolute;right:-2%;top:-2%;width:22%;aspect-ratio:1;border-radius:50%;background:var(--ac)}
+.ppl{position:absolute}
+.bub{right:0;top:30%;max-width:42%;padding:16px 24px;border-radius:32px;background:var(--ac);color:#fff;font:800 1.05rem/1.25 var(--f1);box-shadow:0 14px 30px rgba(11,88,168,.3)}
+.act{left:0;bottom:20%;display:flex;gap:12px;align-items:center;padding:9px 22px 9px 9px;border-radius:999px}
+.ic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(11,88,168,.12);color:var(--ac)}
+.act small,.dk small{display:block;font-size:.7rem;line-height:1.2}.act small{color:var(--ac);font-weight:600}.act b,.dk b{font-size:.98rem;line-height:1.2}
+.dk{right:1%;bottom:3%;display:flex;gap:14px;align-items:center;padding:12px 14px 12px 24px;border-radius:999px;background:#14171c;color:#fff;box-shadow:0 14px 30px rgba(12,35,64,.3)}
+.dk small{color:var(--ac3)}
+.avs{display:flex}.avs img,.avs span{width:38px;height:38px;border-radius:50%;border:2px solid #14171c;margin-left:-8px;background:#fff;object-fit:contain}
+.avs span{display:grid;place-items:center;background:#2b2f38;color:#aab3c2;font-size:.75rem}
+@media(max-width:1100px){.grid .card:nth-child(n){grid-column:span 6}.grid .card.wd:nth-child(n){grid-column:span 12}}
+@media(max-width:860px){.grid .card:nth-child(n),.grid .card.wd:nth-child(n){grid-column:span 12}.cm{height:300px}.me{grid-template-columns:1fr}.pst{max-width:460px}}
+@media(max-width:560px){.bub{font-size:.88rem;padding:12px 16px}.dk{padding:9px 10px 9px 16px;gap:8px}.avs img,.avs span{width:30px;height:30px}.act{padding-right:14px}.act b,.dk b{font-size:.85rem}}
+</style>
+
+<style id="merged-presentation-and-projects">
+.flip-card{position:absolute;left:19%;top:7%;width:57%;height:90%;cursor:pointer;-webkit-perspective:1200px;perspective:1200px}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1)}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:46px;-webkit-backface-visibility:hidden;backface-visibility:hidden;overflow:hidden}
+.flip-front{background:#0c2340;box-shadow:0 22px 50px rgba(12,35,64,.28)}
+.flip-front img{width:100%;height:100%;object-fit:cover;object-position:50% 16%;display:block}
+.flip-back{position:absolute;inset:0;border-radius:46px;-webkit-backface-visibility:hidden;backface-visibility:hidden;overflow:hidden}
+.fc-body{display:grid;gap:9px;width:100%}
+.fc-name{font:800 1.05rem/1.2 var(--f1);color:var(--tx)}
+.fc-role{font-size:.76rem;color:var(--ac);font-weight:600;margin-top:-2px}
+.fc-row{display:flex;align-items:flex-start;gap:7px;font-size:.78rem;color:var(--tx);line-height:1.3}
+.fc-row a{color:var(--tx);text-decoration:none;word-break:break-all}
+.fc-ic{flex:none;font-size:.88rem;margin-top:1px}
+.fc-wa{display:block;text-align:center;margin-top:4px;padding:9px 14px;font-size:.8rem}
+.pph{all:unset;box-sizing:border-box;position:absolute;left:19%;top:7%;width:57%;height:90%;overflow:hidden;border-radius:46px;cursor:zoom-in;box-shadow:0 22px 50px rgba(12,35,64,.28)}
+.flip-card[aria-pressed="true"] .flip-inner,.flip-card.is-flipped .flip-inner{transform:rotateY(180deg)}
+.projects-more-wrap{display:flex;justify-content:center;margin:28px 0 8px}
+#projects-more[hidden]{display:none}
+@media(max-width:560px){.flip-card{border-radius:30px}.flip-back{padding:12px}.fc-body{gap:6px}.fc-name{font-size:.9rem}.fc-row{font-size:.72rem}}
+
+/* Interação da apresentação: detalhes aparecem somente ao virar o cartão */
+.owner-details{opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease,visibility .35s}
+.pst.is-flipped + .owner-details{opacity:1;visibility:visible;transform:translateY(0)}
+.ppl,.pbd{transition:transform .65s cubic-bezier(.2,.7,.2,1),opacity .45s ease;will-change:transform}
+.pst.is-flipped .bub{transform:translate(48%,-22%) rotate(4deg)}
+.pst.is-flipped .act{transform:translate(-42%,18%) rotate(-5deg)}
+.pst.is-flipped .dk{transform:translate(40%,35%) rotate(4deg)}
+.pst.is-flipped .pbd{transform:translate(-38%,-38%) scale(.82);opacity:.48}
+@media(max-width:860px){.pst.is-flipped .bub{transform:translate(10%,-35%) scale(.9)}.pst.is-flipped .act{transform:translate(-12%,18%) scale(.9)}.pst.is-flipped .dk{transform:translate(8%,30%) scale(.9)}.pst.is-flipped .pbd{transform:translate(-25%,-25%) scale(.8)}}
+@media(prefers-reduced-motion:reduce){.owner-details,.ppl,.pbd{transition:none}}
+
+
+/* Paleta cromática em painel escuro, inspirado na referência enviada */
+.palette-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(112px,auto);gap:10px;padding:16px;border-radius:24px;background:#080808;color:#f9f9f9;margin:12px 0 8px}
+.palette-chip{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:22px;min-width:0;min-height:132px;padding:16px;border:1px solid rgba(255,255,255,.28);border-radius:20px;background:var(--chip);color:var(--palette-text,#fff);text-align:left;font:inherit;cursor:pointer;overflow:hidden;isolation:isolate}
+.palette-chip::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.10));z-index:-1;pointer-events:none}
+.palette-chip[style*="--chip:#F"],.palette-chip[style*="--chip:#f"],.palette-chip[style*="--chip:#E"],.palette-chip[style*="--chip:#e"],.palette-chip[style*="--chip:#D"],.palette-chip[style*="--chip:#d"],.palette-chip[style*="--chip:#C"],.palette-chip[style*="--chip:#c"]{--palette-text:#171717}
+.palette-name{font-size:1rem;line-height:1.25;font-weight:600;overflow-wrap:anywhere}
+.palette-values{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.68rem;line-height:1.45;opacity:.95}
+.palette-values b{font-weight:500;overflow-wrap:anywhere}
+.palette-main{grid-column:span 2;grid-row:span 2;min-height:250px}
+.palette-primary{grid-row:span 2;min-height:250px}
+.palette-gradient-card{grid-column:span 2;display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:132px;padding:16px;border:1px solid rgba(255,255,255,.28);border-radius:20px;background:var(--palette-gradient);color:#fff;overflow:hidden}
+.palette-gradient-card::before{background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.28))}
+.palette-gradient-values{font-size:.72rem;line-height:1.4;overflow-wrap:anywhere;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+@media(max-width:680px){.palette-board{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(112px,auto);padding:10px;gap:8px}.palette-main{grid-column:span 2;grid-row:span 1;min-height:180px}.palette-primary{grid-row:span 1;min-height:150px}.palette-gradient-card{grid-column:span 2}.palette-chip{padding:12px;border-radius:16px}.palette-values{font-size:.63rem}}
+</style>
+
+<style id="owner-card-flip-fix">
+/* Correção definitiva do cartão de apresentação: foto na frente, contatos somente no verso. */
+#ownb{display:block;isolation:isolate;overflow:visible;border-radius:46px;outline-offset:5px}
+#ownb .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .68s cubic-bezier(.2,.75,.2,1)}
+#ownb .flip-front,#ownb .flip-back{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+#ownb .flip-front{transform:rotateY(0deg);background:#0c2340}
+#ownb .flip-front img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 16%}
+#ownb .flip-back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;padding:clamp(14px,2vw,24px);background:rgba(255,255,255,.94);color:#0c2340;box-shadow:inset 0 0 0 1px rgba(12,35,64,.12)}
+#ownb .flip-back .fc-body{gap:clamp(7px,1.1vw,11px);width:100%;max-width:100%}
+#ownb .flip-back .fc-name,#ownb .flip-back .fc-row a{color:#0c2340}
+#ownb .flip-back .fc-role{color:#0b58a8}
+#ownb .flip-back .fc-row{font-size:clamp(.68rem,.95vw,.82rem);overflow-wrap:anywhere}
+#ownb .flip-back .fc-wa{width:100%;box-sizing:border-box}
+#ownb.is-flipped .flip-inner{transform:rotateY(180deg)}
+#ownb:not(.is-flipped) .flip-back{pointer-events:none}
+#ownb.is-flipped .flip-front{pointer-events:none}
+@media(max-width:560px){#ownb .flip-front,#ownb .flip-back{border-radius:30px}#ownb .flip-back{padding:12px}#ownb .flip-back .fc-row{font-size:.68rem}#ownb .flip-back .fc-body{gap:6px}}
+@media(prefers-reduced-motion:reduce){#ownb .flip-inner{transition:none}}
+</style>
+
+<style id="requested-owner-card-adjustments">
+/* Ajustes solicitados: apresentação sempre visível, cantos arredondados e halo suave. */
+#apresentacao .owner-details{
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+}
+#apresentacao .pst{
+  isolation:isolate;
+}
+#apresentacao #ownb{
+  border-radius:36px;
+  filter:drop-shadow(0 0 10px rgba(51,117,187,.18));
+}
+#apresentacao #ownb .flip-front,
+#apresentacao #ownb .flip-back{
+  border-radius:36px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.78),
+    0 0 18px rgba(51,117,187,.24),
+    0 0 36px rgba(165,200,240,.2);
+}
+#apresentacao #ownb .flip-front img{
+  border-radius:inherit;
+}
+@media(max-width:560px){
+  #apresentacao #ownb,
+  #apresentacao #ownb .flip-front,
+  #apresentacao #ownb .flip-back{border-radius:28px}
+}
+</style>
+
+<style id="project-background-and-palette-adjustments">
+/* Fundos claros com gradientes desfocados nas cores de cada projeto */
+#case{position:relative;isolation:isolate}
+#case::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:0 0 auto;height:100%;min-height:100%;background:radial-gradient(ellipse at 8% 8%,hsl(var(--a,215) 78% 82% / .55),transparent 34%),radial-gradient(ellipse at 88% 22%,hsl(var(--b,205) 72% 84% / .58),transparent 35%),radial-gradient(ellipse at 50% 58%,rgba(255,255,255,.96),transparent 62%),linear-gradient(145deg,#fff 0%,#f7f9fc 55%,#fff 100%);filter:blur(24px);opacity:.95}
+#case .chero,#case .car,#case .apps figure{background:linear-gradient(135deg,rgba(255,255,255,.96),hsl(var(--a,215) 65% 94% / .78) 52%,hsl(var(--b,205) 60% 94% / .72));box-shadow:0 12px 34px rgba(20,60,110,.08)}
+#case .chero::before,#case .car::before,#case .apps figure::before{content:"";position:absolute;inset:-18px;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 18% 18%,hsl(var(--a,215) 80% 78% / .38),transparent 55%),radial-gradient(ellipse at 82% 80%,hsl(var(--b,205) 75% 82% / .42),transparent 58%);filter:blur(22px)}
+#case .chero>*,#case .car>*,#case .apps figure>*{z-index:1}
+/* Painel de paletas claro, mantendo as amostras nas cores originais */
+#case .palette-board{background:linear-gradient(135deg,#fff 0%,#f5f8fd 55%,hsl(var(--a,215) 55% 94% / .9) 100%);color:var(--tx);border:1px solid rgba(11,88,168,.12);box-shadow:0 12px 32px rgba(20,60,110,.08)}
+#case .palette-chip{border-color:rgba(12,35,64,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 5px 14px rgba(12,35,64,.06)}
+#case .palette-chip::before{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.04))}
+#case .palette-gradient-card{border-color:rgba(12,35,64,.12)}
+#case .palette-gradient-values{text-shadow:0 1px 3px rgba(0,0,0,.18)}
+@media(prefers-reduced-motion:reduce){#case::before{filter:none}}
+</style>
+
+<style id="project-color-blur-refinement">
+/* Fundo dos detalhes: branco com manchas de cor do próprio projeto, suavemente desfocadas. */
+#case{position:relative;isolation:isolate;background:#fff;overflow:hidden;border-radius:28px}
+#case::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:-42px;background:radial-gradient(ellipse at 8% 12%,hsl(var(--a,215) 78% 78% / .52),transparent 34%),radial-gradient(ellipse at 88% 20%,hsl(var(--b,205) 75% 80% / .55),transparent 36%),radial-gradient(ellipse at 48% 72%,hsl(var(--a,215) 70% 90% / .35),transparent 42%),linear-gradient(135deg,#fff 0%,#f9fbff 48%,#fff 100%);filter:blur(32px);opacity:1}
+#case .palette-board{position:relative;isolation:isolate;overflow:hidden;background:#fff;color:var(--tx);border:1px solid rgba(11,88,168,.13);box-shadow:0 12px 32px rgba(20,60,110,.07)}
+#case .palette-board::before{content:"";position:absolute;inset:-28px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 18%,hsl(var(--a,215) 78% 78% / .42),transparent 42%),radial-gradient(ellipse at 88% 26%,hsl(var(--b,205) 74% 82% / .43),transparent 43%),radial-gradient(ellipse at 55% 95%,hsl(var(--a,215) 65% 91% / .35),transparent 45%),#fff;filter:blur(28px);opacity:.98}
+#case .palette-board>*{position:relative;z-index:1}
+#case .chero,#case .car,#case .apps figure{background:linear-gradient(135deg,rgba(255,255,255,.94),hsl(var(--a,215) 65% 94% / .68) 52%,hsl(var(--b,205) 60% 94% / .65));}
+@media(prefers-reduced-motion:reduce){#case::before,#case .palette-board::before{filter:none}}
+</style>
+
+<style id="full-page-project-color-background">
+/* Fundo global da página: branco com luzes difusas que acompanham as cores do projeto aberto. */
+:root{--page-a:215;--page-b:205}
+html,body{min-height:100%;background:#fff}
+body{background:#fff!important;position:relative;isolation:isolate}
+body::before{content:"";position:fixed;inset:-8vh -8vw;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 16%,hsl(var(--page-a,215) 82% 82% / .48),transparent 34%),radial-gradient(ellipse at 88% 24%,hsl(var(--page-b,205) 78% 84% / .52),transparent 36%),radial-gradient(ellipse at 52% 82%,hsl(var(--page-a,215) 68% 91% / .36),transparent 42%),linear-gradient(135deg,#fff 0%,#fbfcff 48%,#fff 100%);filter:blur(48px);opacity:1;transform:scale(1.04)}
+#case{background:transparent!important;overflow:visible!important;border-radius:0!important}
+#case::before{display:none!important}
+@media(prefers-reduced-motion:reduce){body::before{filter:none}}
+</style>
+
+<style id="project-detail-hero-title-refinement">
+/* Hero dos detalhes: imagem em destaque e título compacto, sem encobrir a arte. */
+#case .chero{aspect-ratio:16/8;min-height:260px;isolation:isolate;background:linear-gradient(135deg,#fff,hsl(var(--a,215) 55% 95% / .72),hsl(var(--b,205) 50% 96% / .72));}
+#case .chero.st .hb{position:absolute;inset:0;width:100%;height:100%;padding:12px;background:radial-gradient(ellipse at 18% 15%,hsl(var(--a,215) 62% 94% / .78),transparent 58%),radial-gradient(ellipse at 84% 84%,hsl(var(--b,205) 58% 92% / .78),transparent 62%),#f9fbff;}
+#case .chero.st .hb img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 12px 18px rgba(12,35,64,.14));}
+#case .chero .tt{left:12px;bottom:12px;max-width:min(72%,520px);width:max-content;padding:9px 14px;border-radius:14px;background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.92);box-shadow:0 5px 18px rgba(12,35,64,.12);-webkit-backdrop-filter:blur(14px) saturate(1.25);backdrop-filter:blur(14px) saturate(1.25);}
+#case .chero .tt small{display:block;font-size:.68rem;line-height:1.35;color:var(--mu);margin-bottom:2px;}
+#case .chero .tt h1{font-size:clamp(1.15rem,2.4vw,1.8rem);line-height:1.12;letter-spacing:-.025em;overflow-wrap:anywhere;}
+@media(max-width:560px){#case .chero{aspect-ratio:4/3;min-height:220px}#case .chero.st .hb{padding:8px}#case .chero .tt{left:9px;bottom:9px;max-width:calc(100% - 18px);padding:8px 11px;border-radius:12px}#case .chero .tt h1{font-size:1.15rem}}
+</style>
+
+
+<style id="mobile-presentation-card-spacing-fix">
+/* No celular, reserva áreas próprias para os elementos flutuantes ao redor do cartão. */
+@media(max-width:560px){
+  #apresentacao .pst{aspect-ratio:auto;height:450px;max-width:460px;margin-inline:auto}
+  #apresentacao .pbk{left:19%;top:60px;width:58%;height:260px;border-radius:30px}
+  #apresentacao #ownb{left:19%;top:65px;width:58%;height:260px;border-radius:28px}
+  #apresentacao #ownb .flip-front,#apresentacao #ownb .flip-back{border-radius:28px}
+  #apresentacao .bub{top:0;right:0;left:auto;max-width:48%;padding:10px 13px;font-size:.82rem}
+  #apresentacao .act{left:0;bottom:66px;padding:8px 12px 8px 8px;gap:8px}
+  #apresentacao .dk{right:0;bottom:0;padding:8px 10px 8px 14px;gap:7px}
+  #apresentacao .pst.is-flipped .bub,
+  #apresentacao .pst.is-flipped .act,
+  #apresentacao .pst.is-flipped .dk{transform:none}
+  #apresentacao .pst.is-flipped .pbd{transform:translate(-25%,-25%) scale(.8);opacity:.35}
+}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<header class="nav glass">
+  <a class="logo" href="#topo" aria-label="Seven art Studios, início"><img data-logo alt="Seven art Studios" width="235" height="30"></a>
+  <nav id="menu" aria-label="Principal"><a href="#apresentacao">Apresentação</a><a href="#projetos">Projetos</a><a href="#estudio">Estúdio</a><a href="#contato">Contato</a></nav>
+  <button class="burger" id="bg" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+</header>
+
+<main id="home">
+  <section class="hero" id="topo"><div class="wrap hg">
+    <div>
+      <h1>Design que transforma ideias em <em>identidade.</em></h1>
+      <p>Criamos identidades visuais e experiências gráficas que traduzem a essência de cada projeto.</p>
+      <div class="cta"><a class="btn p" href="#contato">Iniciar um projeto</a><a class="btn s" href="#projetos">Explorar projetos</a></div>
+    </div>
+    <div class="stage" id="stage" aria-hidden="true">
+      <img class="big" data-symbol alt="" width="640" height="563">
+      <div class="lens" id="lens"></div>
+      <div class="chip a glass"><i style="background:#0b58a8"></i><i style="background:#3375bb"></i><i style="background:#a5c8f0"></i>Paleta</div>
+      <div class="chip b glass">Aa</div>
+    </div>
+  </div></section>
+
+  <section id="apresentacao"><div class="wrap about me">
+    <div class="pst rv">
+      <div class="pbk"></div>
+      <div class="flip-card" id="ownb" role="button" tabindex="0" aria-label="Virar card" aria-pressed="false">
+        <div class="flip-inner">
+          <div class="flip-front"><img id="owni" alt="" loading="eager"></div>
+          <div class="flip-back glass">
+            <div class="fc-body">
+              <b class="fc-name" id="fc-name"></b>
+              <small class="fc-role" id="fc-role"></small>
+              <div class="fc-row"><span class="fc-ic">📞</span><a href="tel:+5511921562937">(11) 92156-2937</a></div>
+              <div class="fc-row"><span class="fc-ic">✉</span><a href="mailto:Samuelsousalmeida2704@gmail.com">Samuelsousalmeida2704@gmail.com</a></div>
+              <div class="fc-row"><span class="fc-ic">📷</span><a href="https://instagram.com/sevenart.oficial" target="_blank" rel="noopener">@sevenart.oficial</a></div>
+              <div class="fc-row"><span class="fc-ic">📷</span><a href="https://instagram.com/samuel_s.alm" target="_blank" rel="noopener">@samuel_s.alm</a></div>
+              <a class="fc-wa btn p" href="https://wa.me/5511921562937" target="_blank" rel="noopener">WhatsApp ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pbd" aria-hidden="true"><img data-symbol alt=""><i></i></div>
+      <div class="ppl bub" id="ownq"></div>
+      <div class="ppl act glass"><span class="ic">✦</span><span><small>Especialidade</small><b>Identidades visuais</b></span></div>
+      <div class="ppl dk"><span><small>Portfólio</small><b id="ownp"></b></span><span class="avs" id="ava"></span></div>
+    </div>
+    <div class="rv owner-details"><h2 style="margin-top:30px"><span id="ownn"></span></h2><p class="role" id="ownr"></p><p id="ownt"></p></div>
+  </div></section>
+
+  <section id="projetos"><div class="wrap">
+    <h2>Projetos</h2>
+    <div class="filters glass" id="flt" role="group" aria-label="Filtrar por categoria"></div>
+    <div class="grid" id="grid"></div>
+    <div class="projects-more-wrap"><button class="btn s" id="projects-more" type="button" aria-expanded="false">Ver mais projetos ↓</button></div>
+  </div></section>
+
+  <section id="estudio"><div class="wrap about">
+    <div class="rv"><h2 style="margin-top:30px">O estúdio</h2><p id="abt"></p></div>
+    <ul class="svc glass rv" id="svc"></ul>
+  </div></section>
+
+  <section id="contato"><div class="wrap">
+    <h2>Vamos conversar</h2>
+    <form class="glass rv" id="fm">
+      <label>Nome<input name="n" required autocomplete="name"></label>
+      <label>E-mail<input name="e" type="email" required autocomplete="email"></label>
+      <label>Sobre o projeto<textarea name="m" required></textarea></label>
+      <button class="btn p" type="submit">Enviar mensagem</button>
+      <div id="st" role="status" aria-live="polite"></div>
+    </form>
+  </div></section>
+</main>
+
+<main id="case" class="wrap" hidden></main>
+
+<div class="wrap"><footer><span class="fl"><img data-logo alt="Seven art Studios" width="173" height="22"><span id="ft"></span></span><nav id="soc"></nav></footer></div>
+<a class="btn wa" id="wa" href="#contato" target="_blank" rel="noopener">WhatsApp</a>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Visualização ampliada"><div class="lbst" id="lbst"><img id="lbi" alt="" draggable="false"></div><div class="lbt glass"><button id="lbpv" aria-label="Anterior">‹</button><button id="lbnx" aria-label="Próxima">›</button><button id="lbzo" aria-label="Diminuir zoom">−</button><button id="lbzi" aria-label="Aumentar zoom">+</button><button id="lbm">Ver apresentação</button><span id="lbc" aria-live="polite"></span><button id="lbx" aria-label="Fechar">✕</button></div></div>
+
+<script>/* Arquivos da marca embutidos (não precisa editar) */
+const BRAND = {logo:"assets/image-f6f686a91d3369ea.webp",symbol:"assets/image-a69c008998362e3d.webp"};</script>
+<script>/* Imagens dos projetos: miniatura "t" e versão ampliada "f". Originais intactos em originais-projetos.zip */
+const IMG={"lencois-logo":{"t":"assets/image-0a0d25c473311a9a.webp","f":"assets/image-94de819490972598.webp"},"gurgueia-logo":{"t":"assets/image-c1377528b595fc95.webp","f":"assets/image-8a85f5a9766cebf9.webp"},"paladinos-logo":{"t":"assets/image-83ecc324ab58f7af.webp","f":"assets/image-23f5225cbfe987a0.webp"},"paladinos-ap0":{"t":"assets/image-ceb1c717decc992b.webp","f":"assets/image-6d11666f89beabbd.webp"},"horebe-logo":{"t":"assets/image-64672b624c18830d.webp","f":"assets/image-69a6613d842ba0dc.webp"},"moria-logo":{"t":"assets/image-937f1dc0a172430e.webp","f":"assets/image-5c4d39f4882a1e73.webp"},"regiao13-logo":{"t":"assets/image-ceb565e9f15fd237.webp","f":"assets/image-a806e101e191e2ca.webp"},"regiao13-ap0":{"t":"assets/image-0fca613079554ade.webp","f":"assets/image-032c4423cb8230d8.webp"},"estrela-norte-logo":{"t":"assets/image-98a39e0cc12317e2.webp","f":"assets/image-3e9b6cc10bd6ec0a.webp"},"estrela-norte-ap0":{"t":"assets/image-40f2e478782a25ee.webp","f":"assets/image-364cc882023dffb9.webp"},"guardioes-logo":{"t":"assets/image-fa4767ba56f01223.webp","f":"assets/image-3feb19a3057801f4.webp"},"guardioes-ap0":{"t":"assets/image-dafad083d68a2d1c.webp","f":"assets/image-4ad34571467a0602.webp"},"estrela-dalva-logo":{"t":"assets/image-c26909790aa2a78d.webp","f":"assets/image-2feb06e60b78db83.webp"},"doce-candy-logo":{"t":"assets/image-595c58997c16a4e0.webp","f":"assets/image-31fc5cd0e5c085f1.webp"},"doce-candy-ap0":{"t":"assets/image-77c1a83888a2b24d.webp","f":"assets/image-9914d4adba843d21.webp"},"doce-candy-ap1":{"t":"assets/image-7e000dadfdd5d87f.webp","f":"assets/image-1ea3eafb5f549114.webp"},"doce-candy-ap2":{"t":"assets/image-312fbd4e92fbf925.webp","f":"assets/image-96d636223c691ce6.webp"},"doce-candy-st0":{"t":"assets/image-477a47c078fdc829.webp","f":"assets/image-eebcc487bae8798b.webp"},"terceirao-ap0":{"t":"assets/image-ac3c2ae3f75013f7.webp","f":"assets/image-1a9154d1326b3c44.webp"},"falcoes-alpes-logo":{"t":"assets/image-b392e8a9a885a3ea.webp","f":"assets/image-226183e7146c699b.webp"},"gato-mato-logo":{"t":"assets/image-67d6171fec2b9852.webp","f":"assets/image-92d48c95574dd4f6.webp"},"gaviao-logo":{"t":"assets/image-3b3519654726c473.webp","f":"assets/image-71cbd9d4c416fe79.webp"},"genesis-logo":{"t":"assets/image-50d7c8a7d1bc898c.webp","f":"assets/image-8b53e68df858f441.webp"},"gerizim-logo":{"t":"assets/image-11f17da2745c77dc.webp","f":"assets/image-7141b88062e995ab.webp"},"genesis-kids-logo":{"t":"assets/image-c738bfb03d938f5f.webp","f":"assets/image-f019ce1946f0f7df.webp"},"bem-te-vi-logo":{"t":"assets/image-c19fa880d6ff1893.webp","f":"assets/image-7180b488bdd66cf2.webp"},"carmelo-logo":{"t":"assets/image-314cd346a3f77866.webp","f":"assets/image-28b6590a70dce293.webp"},"corujas-logo":{"t":"assets/image-9f61db87852e01b7.webp","f":"assets/image-d7a9707ae860dec1.webp"},"gavioes-un-logo":{"t":"assets/image-e1943569388c2274.webp","f":"assets/image-f2f5ca5f639f3632.webp"},"siao-logo":{"t":"assets/image-4c9ae1af8a679010.webp","f":"assets/image-0558b4aeb5f17d24.webp"},"sinai-logo":{"t":"assets/image-0c24f59ccdb82016.webp","f":"assets/image-ad2130c5413b7d44.webp"},"ararate-logo":{"t":"assets/image-ae59d43fdaa78a38.webp","f":"assets/image-fe9f90c0f4e4794a.webp"},"asa-branca-logo":{"t":"assets/image-8c2922c6fd36eb74.webp","f":"assets/image-17a27f55ba3fe7d8.webp"},"beija-flor-logo":{"t":"assets/image-6e7f50ef2bc18d5c.webp","f":"assets/image-d6992ec1bb0240a2.webp"},"elite-rei-logo":{"t":"assets/image-28cd9ba167290479.webp","f":"assets/image-920c2eb50cc0c2d2.webp"},"falcao-peregrino-logo":{"t":"assets/image-df9a31aaacff2583.webp","f":"assets/image-717393716488e934.webp"},"texto-frente-logo":{"t":"assets/image-033ed081f9347e34.webp","f":"assets/image-f720fb8f3957f769.webp"}};
+IMG.owner={t:"assets/image-4481100a3fc4b909.webp",f:"assets/image-aa360f6e39a77afd.webp"};
+const T=k=>IMG[k]?IMG[k].t:k,F=k=>IMG[k]?IMG[k].f:k;</script>
+<script>
+/* ===== CONTEÚDO EDITÁVEL: altere somente este bloco =====
+   Imagens: coloque o caminho/URL em "img" (principal) e "gallery" (lista).
+   Contatos vazios ("") ficam ocultos. WhatsApp: só números com DDI, ex. "5575999999999". */
+const SITE = {
+  name: "Seven Art Studios",
+  logo: BRAND.logo, symbol: BRAND.symbol, /* aceitam também um caminho de arquivo */
+  owner: { name: "Samuel Almeida", role: "Designer gráfico", bio: "Crio identidades visuais, logotipos, lettering, uniformes e projetos gráficos que traduzem a essência de cada projeto.", tagline: "Design que transforma ideias em identidade.", photo: "assets/image-2a604f30648fe2f1.jpg", alt: "Samuel Almeida usando uniforme de Desbravadores" }, /* edite livremente; photo aceita um caminho de imagem */
+  about: "A Seven Art Studios é um estúdio independente de design gráfico fundado por Samuel Almeida. Desenvolvemos identidades visuais e soluções gráficas com foco especial em clubes de Desbravadores e Aventureiros e departamentos da Igreja Adventista. Cada projeto busca traduzir a história, os valores e a personalidade de uma organização em uma marca consistente — do logotipo e lettering às aplicações em uniformes, bandeiras, camisetas e outros materiais gráficos. Acreditamos que o design vai além da aparência: ele transmite emoção, comunica propósito e ajuda cada projeto a ser reconhecido.",
+  whatsapp: "5511921562937", email: "", instagram: "", behance: "",
+  cats: { identidade: "Identidade visual", logos: "Logotipos e lettering", uniformes: "Uniformes", institucional: "Projetos institucionais", embalagens: "Embalagens e materiais gráficos" },
+  showDemos: false, /* false oculta os 6 projetos de exemplo (p-1 a p-6) */
+  projects: [
+    {"id": "r-lencois", "real": true, "cat": "logos", "title": "Distrito Lençóis", "hue": [189, 229], "thumb": "lencois-logo", "logoImg": "lencois-logo", "palette": [{"hex": "#093548", "role": "Principal"}, {"hex": "#FEF6E7", "role": "Secundária"}, {"hex": "#99DFEA", "role": "Secundária"}, {"hex": "#3E9EB0", "role": "Secundária"}, {"hex": "#95A396", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-gurgueia", "real": true, "cat": "logos", "title": "Clube de Desbravadores Guerreiros do Gurguéia", "hue": [49, 89], "thumb": "gurgueia-logo", "logoImg": "gurgueia-logo", "palette": [{"hex": "#EFC719", "role": "Principal"}, {"hex": "#000004", "role": "Secundária"}, {"hex": "#E8AE62", "role": "Secundária"}, {"hex": "#474972", "role": "Secundária"}, {"hex": "#F9F2A5", "role": "Secundária"}, {"hex": "#0000A1", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-paladinos", "real": true, "cat": "uniformes", "title": "Paladinos — Paulista Sul", "hue": [206, 246], "thumb": "paladinos-logo", "logoImg": "paladinos-logo", "palette": [{"hex": "#688499", "role": "Principal"}, {"hex": "#030E1E", "role": "Secundária"}, {"hex": "#FAFEF5", "role": "Secundária"}, {"hex": "#384C63", "role": "Secundária"}, {"hex": "#6F5D54", "role": "Secundária"}, {"hex": "#ABB7B4", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [{"k": "paladinos-ap0", "c": "Camisa, frente e verso"}], "studies": [], "gallery": []},
+    {"id": "r-horebe", "real": true, "cat": "logos", "title": "Unidade Horebe", "hue": [187, 227], "thumb": "horebe-logo", "logoImg": "horebe-logo", "palette": [{"hex": "#FEFFFE", "role": "Principal"}, {"hex": "#130E35", "role": "Secundária"}, {"hex": "#D1CABB", "role": "Secundária"}, {"hex": "#5F7077", "role": "Secundária"}, {"hex": "#2B304E", "role": "Secundária"}, {"hex": "#5EB6C2", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-moria", "real": true, "cat": "logos", "title": "Unidade Moriá", "hue": [231, 271], "thumb": "moria-logo", "logoImg": "moria-logo", "palette": [{"hex": "#29285E", "role": "Principal"}, {"hex": "#FBF9F5", "role": "Secundária"}, {"hex": "#B37870", "role": "Secundária"}, {"hex": "#BED2D8", "role": "Secundária"}, {"hex": "#5762A1", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-regiao13", "real": true, "cat": "uniformes", "title": "13ª Região — Missão Piauiense", "hue": [15, 55], "thumb": "regiao13-logo", "logoImg": "regiao13-logo", "palette": [{"hex": "#353D4A", "role": "Principal"}, {"hex": "#FFFFFF", "role": "Secundária"}, {"hex": "#C4CACA", "role": "Secundária"}, {"hex": "#90472F", "role": "Secundária"}, {"hex": "#1E1F22", "role": "Secundária"}, {"hex": "#B48C6C", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [{"k": "regiao13-ap0", "c": "Camisa, frente e verso"}], "studies": [], "gallery": []},
+    {"id": "r-estrela-norte", "real": true, "cat": "uniformes", "title": "Clube Estrela do Norte", "hue": [216, 256], "thumb": "estrela-norte-logo", "logoImg": "estrela-norte-logo", "palette": [{"hex": "#000000", "role": "Principal"}, {"hex": "#916244", "role": "Secundária"}, {"hex": "#1C2028", "role": "Secundária"}, {"hex": "#CEA990", "role": "Secundária"}, {"hex": "#0C4193", "role": "Secundária"}, {"hex": "#7C4627", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [{"k": "estrela-norte-ap0", "c": "Camisa, frente e verso"}], "studies": [], "gallery": []},
+    {"id": "r-guardioes", "real": true, "cat": "uniformes", "title": "Guardiões da Aurora", "hue": [204, 244], "thumb": "guardioes-logo", "logoImg": "guardioes-logo", "palette": [{"hex": "#0E1E26", "role": "Principal"}, {"hex": "#F2F7B1", "role": "Secundária"}, {"hex": "#145077", "role": "Secundária"}, {"hex": "#366D8F", "role": "Secundária"}, {"hex": "#C8D38D", "role": "Secundária"}, {"hex": "#2A4351", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [{"k": "guardioes-ap0", "c": "Camisa, frente e verso"}], "studies": [], "gallery": []},
+    {"id": "r-estrela-dalva", "real": true, "cat": "logos", "title": "Clube Estrela D’Alva", "hue": [34, 74], "thumb": "estrela-dalva-logo", "logoImg": "estrela-dalva-logo", "palette": [{"hex": "#070D21", "role": "Principal"}, {"hex": "#FFFFFE", "role": "Secundária"}, {"hex": "#D88D29", "role": "Secundária"}, {"hex": "#583A28", "role": "Secundária"}, {"hex": "#DFB155", "role": "Secundária"}, {"hex": "#F1E5B8", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-doce-candy", "real": true, "cat": "identidade", "title": "Doce Candy", "hue": [3, 43], "thumb": "doce-candy-logo", "logoImg": "doce-candy-logo", "palette": [{"hex": "#400908", "role": "Principal"}, {"hex": "#E61E13", "role": "Secundária"}, {"hex": "#7A161B", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [{"k": "doce-candy-ap0", "c": "Caneca"}, {"k": "doce-candy-ap1", "c": "Copo"}, {"k": "doce-candy-ap2", "c": "Sacola"}], "studies": [{"k": "doce-candy-st0", "c": "Símbolo isolado"}], "gallery": []},
+    {"id": "r-terceirao", "real": true, "cat": "uniformes", "title": "Terceirão (3ºC)", "hue": [215, 255], "thumb": "terceirao-ap0", "logoImg": "", "palette": [], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [{"k": "terceirao-ap0", "c": "Polo, frente e verso"}], "studies": [], "gallery": []},
+        {"id": "r-falcoes-alpes", "real": true, "cat": "logos", "title": "Falcões dos Alpes", "hue": [79, 119], "thumb": "falcoes-alpes-logo", "logoImg": "falcoes-alpes-logo", "palette": [{"hex": "#02102A", "role": "Principal"}, {"hex": "#6F853D", "role": "Secundária"}, {"hex": "#FDFEF8", "role": "Secundária"}, {"hex": "#B3CC7C", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-gato-mato", "real": true, "cat": "logos", "title": "Gato do Mato", "hue": [24, 64], "thumb": "gato-mato-logo", "logoImg": "gato-mato-logo", "palette": [{"hex": "#061821", "role": "Principal"}, {"hex": "#B0B491", "role": "Secundária"}, {"hex": "#46422F", "role": "Secundária"}, {"hex": "#F2D3B4", "role": "Secundária"}, {"hex": "#9E633C", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-gaviao", "real": true, "cat": "logos", "title": "Gavião", "hue": [193, 233], "thumb": "gaviao-logo", "logoImg": "gaviao-logo", "palette": [{"hex": "#051627", "role": "Principal"}, {"hex": "#F8F9FA", "role": "Secundária"}, {"hex": "#404C5C", "role": "Secundária"}, {"hex": "#ACDFED", "role": "Secundária"}, {"hex": "#77828E", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-genesis", "real": true, "cat": "logos", "title": "Gênesis", "hue": [42, 82], "thumb": "genesis-logo", "logoImg": "genesis-logo", "palette": [{"hex": "#0D1A33", "role": "Principal"}, {"hex": "#0B3F6C", "role": "Secundária"}, {"hex": "#FCFAF4", "role": "Secundária"}, {"hex": "#FCC74E", "role": "Secundária"}, {"hex": "#A31411", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-gerizim", "real": true, "cat": "logos", "title": "Gerizim", "hue": [176, 216], "thumb": "gerizim-logo", "logoImg": "gerizim-logo", "palette": [{"hex": "#000316", "role": "Principal"}, {"hex": "#FFFFFD", "role": "Secundária"}, {"hex": "#74695A", "role": "Secundária"}, {"hex": "#92A684", "role": "Secundária"}, {"hex": "#7FF8F0", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-genesis-kids", "real": true, "cat": "logos", "title": "Gênesis Kids", "hue": [195, 235], "thumb": "genesis-kids-logo", "logoImg": "genesis-kids-logo", "palette": [{"hex": "#080735", "role": "Principal"}, {"hex": "#1CACDA", "role": "Secundária"}, {"hex": "#FDFDFD", "role": "Secundária"}, {"hex": "#69003E", "role": "Secundária"}, {"hex": "#DDA998", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-bem-te-vi", "real": true, "cat": "logos", "title": "Unidade Bem-te-vi", "hue": [22, 62], "thumb": "bem-te-vi-logo", "logoImg": "bem-te-vi-logo", "palette": [{"hex": "#14101E", "role": "Principal"}, {"hex": "#D9EFC8", "role": "Secundária"}, {"hex": "#FFFFFF", "role": "Secundária"}, {"hex": "#B5856A", "role": "Secundária"}, {"hex": "#82574A", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-carmelo", "real": true, "cat": "logos", "title": "Unidade Carmelo", "hue": [10, 50], "thumb": "carmelo-logo", "logoImg": "carmelo-logo", "palette": [{"hex": "#010026", "role": "Principal"}, {"hex": "#FFF8E8", "role": "Secundária"}, {"hex": "#98D9BD", "role": "Secundária"}, {"hex": "#D3492D", "role": "Secundária"}, {"hex": "#34997A", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-corujas", "real": true, "cat": "logos", "title": "Unidade Corujas", "hue": [206, 246], "thumb": "corujas-logo", "logoImg": "corujas-logo", "palette": [{"hex": "#000E19", "role": "Principal"}, {"hex": "#FEFFFE", "role": "Secundária"}, {"hex": "#ACC3C4", "role": "Secundária"}, {"hex": "#7C8276", "role": "Secundária"}, {"hex": "#3D3631", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-gavioes-un", "real": true, "cat": "logos", "title": "Unidade Gaviões", "hue": [192, 232], "thumb": "gavioes-un-logo", "logoImg": "gavioes-un-logo", "palette": [{"hex": "#030A24", "role": "Principal"}, {"hex": "#5C6973", "role": "Secundária"}, {"hex": "#E9E6E2", "role": "Secundária"}, {"hex": "#6AB6CA", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-siao", "real": true, "cat": "logos", "title": "Unidade Sião", "hue": [178, 218], "thumb": "siao-logo", "logoImg": "siao-logo", "palette": [{"hex": "#0E1B2E", "role": "Principal"}, {"hex": "#6FAFAD", "role": "Secundária"}, {"hex": "#FFFFFE", "role": "Secundária"}, {"hex": "#2D4652", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-sinai", "real": true, "cat": "logos", "title": "Unidade Sinaí", "hue": [26, 66], "thumb": "sinai-logo", "logoImg": "sinai-logo", "palette": [{"hex": "#000000", "role": "Principal"}, {"hex": "#CDC2A0", "role": "Secundária"}, {"hex": "#D36E21", "role": "Secundária"}, {"hex": "#FEFFF8", "role": "Secundária"}, {"hex": "#7C2318", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-ararate", "real": true, "cat": "logos", "title": "Ararate", "hue": [186, 226], "thumb": "ararate-logo", "logoImg": "ararate-logo", "palette": [{"hex": "#070C22", "role": "Principal"}, {"hex": "#FFFFFF", "role": "Secundária"}, {"hex": "#672637", "role": "Secundária"}, {"hex": "#12B2C5", "role": "Secundária"}, {"hex": "#AFECD2", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-asa-branca", "real": true, "cat": "logos", "title": "Asa Branca", "hue": [23, 63], "thumb": "asa-branca-logo", "logoImg": "asa-branca-logo", "palette": [{"hex": "#052031", "role": "Principal"}, {"hex": "#D0BFB2", "role": "Secundária"}, {"hex": "#FA650A", "role": "Secundária"}, {"hex": "#F1F4F2", "role": "Secundária"}, {"hex": "#9E7A67", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-beija-flor", "real": true, "cat": "logos", "title": "Beija Flor", "hue": [345, 25], "thumb": "beija-flor-logo", "logoImg": "beija-flor-logo", "palette": [{"hex": "#03131E", "role": "Principal"}, {"hex": "#99DFD3", "role": "Secundária"}, {"hex": "#557351", "role": "Secundária"}, {"hex": "#7E112D", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-elite-rei", "real": true, "cat": "logos", "title": "Elite do Rei", "hue": [34, 74], "thumb": "elite-rei-logo", "logoImg": "elite-rei-logo", "palette": [{"hex": "#060F1B", "role": "Principal"}, {"hex": "#FFFFFE", "role": "Secundária"}, {"hex": "#7E4C30", "role": "Secundária"}, {"hex": "#E0B172", "role": "Secundária"}, {"hex": "#A38868", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-falcao-peregrino", "real": true, "cat": "logos", "title": "Falcão Peregrino", "hue": [36, 76], "thumb": "falcao-peregrino-logo", "logoImg": "falcao-peregrino-logo", "palette": [{"hex": "#070E18", "role": "Principal"}, {"hex": "#303B4A", "role": "Secundária"}, {"hex": "#B7A875", "role": "Secundária"}, {"hex": "#FBF4DA", "role": "Secundária"}, {"hex": "#FDAD38", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    {"id": "r-texto-frente", "real": true, "cat": "logos", "title": "Terceirão (logo)", "hue": [215, 255], "thumb": "texto-frente-logo", "logoImg": "texto-frente-logo", "palette": [{"hex": "#FFFFFF", "role": "Principal"}, {"hex": "#498A2C", "role": "Secundária"}, {"hex": "#03449E", "role": "Secundária"}], "fonts": [], "ctx": "", "concept": "", "logo": "", "apps": [], "studies": [], "gallery": []},
+    { id: "p-1", cat: "identidade", title: "Identidade visual 1", hue: [225, 280], img: "", gallery: ["", "", ""],
+      palette: ["#0D0E11", "#8EA2FF", "#F4F4F1", "#5A64C8"], fonts: ["Títulos: [fonte]", "Textos: [fonte]"],
+      ctx: "[Contexto do cliente e objetivo do projeto.]", concept: "[Ideia central que guiou a criação.]", logo: "[Como o logotipo foi construído: grid, formas, proporções.]", apps: ["Papelaria", "Fachada", "Redes sociais"] },
+    { id: "p-2", cat: "identidade", title: "Identidade visual 2", hue: [20, 340], img: "", gallery: ["", "", ""],
+      palette: ["#1B1B1D", "#E8D9C5", "#C75B4A", "#F7F3EC"], fonts: ["Títulos: [fonte]", "Textos: [fonte]"],
+      ctx: "[Contexto do cliente e objetivo do projeto.]", concept: "[Ideia central que guiou a criação.]", logo: "[Como o logotipo foi construído.]", apps: ["Cartão", "Sacola", "Manual de marca"] },
+    { id: "p-3", cat: "logos", title: "Logotipo e lettering 1", hue: [160, 200], img: "", gallery: ["", "", ""],
+      palette: ["#0F1A17", "#2FBF8F", "#EAF7F1"], fonts: ["Lettering exclusivo", "Apoio: [fonte]"],
+      ctx: "[Contexto e objetivo.]", concept: "[Conceito do lettering.]", logo: "[Construção das letras e esboços.]", apps: ["Aplicação positiva", "Versão negativa", "Selo"] },
+    { id: "p-4", cat: "uniformes", title: "Uniforme 1", hue: [40, 10], img: "", gallery: ["", "", ""],
+      palette: ["#141414", "#F2B134", "#FFFFFF"], fonts: ["Títulos: [fonte]", "Textos: [fonte]"],
+      ctx: "[Contexto e objetivo.]", concept: "[Conceito gráfico do uniforme.]", logo: "[Adaptação da marca ao tecido e à costura.]", apps: ["Frente", "Costas", "Detalhes"] },
+    { id: "p-5", cat: "institucional", title: "Projeto institucional 1", hue: [250, 200], img: "", gallery: ["", "", ""],
+      palette: ["#0B1020", "#3E5BDB", "#DDE4FF"], fonts: ["Títulos: [fonte]", "Textos: [fonte]"],
+      ctx: "[Contexto e objetivo.]", concept: "[Conceito do projeto.]", logo: "[Construção da marca institucional.]", apps: ["Relatório", "Apresentação", "Sinalização"] },
+    { id: "p-6", cat: "embalagens", title: "Embalagem 1", hue: [320, 30], img: "", gallery: ["", "", ""],
+      palette: ["#1A0F14", "#E2548A", "#FFE9F0", "#F4B942"], fonts: ["Títulos: [fonte]", "Textos: [fonte]"],
+      ctx: "[Contexto e objetivo.]", concept: "[Conceito da embalagem.]", logo: "[Construção do logotipo e do rótulo.]", apps: ["Caixa", "Rótulo", "Etiqueta"] }
+  ]
+};
+/* ===== fim do conteúdo editável ===== */
+
+const $ = s => document.querySelector(s), P = SITE.projects.filter(p => p.real || SITE.showDemos);
+document.documentElement.classList.add("js");
+document.querySelectorAll("[data-logo]").forEach(i => i.src = SITE.logo);
+document.querySelectorAll("[data-symbol]").forEach(i => i.src = SITE.symbol);
+const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+const art = (p, img = p.real ? T(p.thumb) : p.img, t = p.title) => img
+  ? `<img class="art" src="${img}" alt="${t}" loading="lazy" decoding="async">`
+  : `<div class="art ph" style="--a:${p.hue[0]};--b:${p.hue[1]}"><b>${t[0]}</b><small>Espaço reservado para a imagem do projeto</small></div>`;
+
+/* revelar ao rolar */
+const io = "IntersectionObserver" in window && !reduce ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 }) : null;
+const rv = () => document.querySelectorAll(".rv:not(.in)").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+
+/* galeria e filtros */
+let cat = "todos";
+const names = { todos: "Todos", ...SITE.cats };
+$("#flt").innerHTML = Object.keys(names).map(k => `<button data-c="${k}" aria-pressed="${k === cat}">${names[k]}</button>`).join("");
+let projectsVisibleCount = 5;
+function drawGrid() {
+  const filtered = P.filter(p => cat === "todos" || p.cat === cat);
+  const visible = filtered.slice(0, projectsVisibleCount);
+  $("#grid").innerHTML = visible.map(p =>
+    `<a class="card rv${p.real ? " lg" : ""}${p.real && (p.apps || []).some(a => /camisa|polo/i.test(a.c)) ? " wd" : ""}" style="--a:${p.hue[0]};--b:${p.hue[1]}" href="#${p.id}" aria-label="Abrir ${p.title}"><div class="cm">${art(p)}<span class="sh" aria-hidden="true">↗</span></div><div class="cf"><div><h3>${p.title}</h3><small><i class="dot"></i>${SITE.cats[p.cat]}</small></div><span class="cb">Ver projeto</span></div></a>`).join("");
+  const more = $("#projects-more");
+  more.hidden = filtered.length <= 5;
+  more.textContent = projectsVisibleCount >= filtered.length ? "Mostrar menos ↑" : `Ver mais projetos (${Math.min(5, filtered.length - projectsVisibleCount)}) ↓`;
+  more.setAttribute("aria-expanded", String(projectsVisibleCount >= filtered.length));
+  rv();
+}
+$("#projects-more").addEventListener("click", () => {
+  const filtered = P.filter(p => cat === "todos" || p.cat === cat);
+  projectsVisibleCount = projectsVisibleCount >= filtered.length ? 5 : Math.min(projectsVisibleCount + 5, filtered.length);
+  drawGrid();
+});
+$("#flt").onclick = e => {
+  const b = e.target.closest("button"); if (!b) return;
+  cat = b.dataset.c;
+  projectsVisibleCount = 5;
+  document.querySelectorAll("#flt button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  $("#grid").classList.add("out");
+  setTimeout(() => { drawGrid(); $("#grid").classList.remove("out"); }, reduce ? 0 : 200);
+};
+drawGrid();
+
+/* estúdio, contatos, rodapé */
+$("#abt").textContent = SITE.about;
+const O = SITE.owner; $("#owni").src = T(O.photo); $("#owni").alt = O.alt;
+$("#ownn").textContent = O.name || "[Seu nome]"; $("#ownr").textContent = O.role || "[Sua função no estúdio]"; $("#ownt").textContent = O.bio || "[Escreva aqui sua apresentação: formação, trajetória e o que guia o seu trabalho.]";
+$("#fc-name").textContent = O.name || "Samuel Almeida"; $("#fc-role").textContent = O.role || "Designer gráfico";
+const ownCard = $("#ownb");
+function toggleOwnCard() {
+  const flipped = ownCard.classList.toggle("is-flipped");
+  ownCard.setAttribute("aria-pressed", String(flipped));
+  const parent = ownCard.closest(".pst");
+  if (parent) parent.classList.toggle("is-flipped", flipped);
+}
+ownCard.onclick = e => { if (e.target.closest("a")) return; toggleOwnCard(); };
+ownCard.onkeydown = e => { if (e.target.closest("a")) return; if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleOwnCard(); } };
+$("#ownq").textContent = O.tagline || "";
+{ const rp = P.filter(p => p.real); $("#ownp").textContent = `${rp.length} projetos`;
+  $("#ava").innerHTML = rp.slice(0, 3).map(p => `<img src="${T(p.thumb)}" alt="">`).join("") + (rp.length > 3 ? `<span>+${rp.length - 3}</span>` : ""); }
+$("#svc").innerHTML = Object.values(SITE.cats).map(c => `<li>${c}</li>`).join("");
+const wa = SITE.whatsapp.replace(/\D/g, "");
+if (wa) $("#wa").href = `https://wa.me/${wa}`;
+else $("#wa").onclick = e => { e.preventDefault(); location.hash = "contato"; $("#st").textContent = "Configure o número do WhatsApp em SITE.whatsapp."; };
+const soc = [["Instagram", SITE.instagram], ["Behance", SITE.behance], ["E-mail", SITE.email && "mailto:" + SITE.email]].filter(x => x[1]);
+$("#soc").innerHTML = soc.length ? soc.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("") : "Redes: preencha em SITE";
+$("#ft").textContent = `© ${new Date().getFullYear()} ${SITE.name}`;
+$("#fm").onsubmit = e => {
+  e.preventDefault();
+  const f = new FormData(e.target), txt = `Olá, sou ${f.get("n")} (${f.get("e")}). ${f.get("m")}`;
+  if (wa) { open(`https://wa.me/${wa}?text=${encodeURIComponent(txt)}`, "_blank"); $("#st").textContent = "Abrindo o WhatsApp com sua mensagem."; }
+  else if (SITE.email) { location.href = `mailto:${SITE.email}?subject=${encodeURIComponent("Contato pelo site")}&body=${encodeURIComponent(txt)}`; $("#st").textContent = "Abrindo seu aplicativo de e-mail."; }
+  else $("#st").textContent = "Formulário pronto. Defina SITE.whatsapp ou SITE.email para receber as mensagens.";
+};
+
+/* estudo de caso */
+function copy(b) {
+  const h = b.dataset.hex, sm = b.querySelector("small"), o = sm.textContent, ok = () => { sm.textContent = "Copiado!"; setTimeout(() => sm.textContent = o, 1200); };
+  (navigator.clipboard ? navigator.clipboard.writeText(h) : Promise.reject()).then(ok, () => { const t = document.createElement("textarea"); t.value = h; document.body.append(t); t.select(); try { document.execCommand("copy"); } catch (_) {} t.remove(); ok(); });
+}
+function showCase(p) {
+  const real = !!p.real, others = P.filter(x => x !== p), n = (p.gallery || []).length;
+  const ap = p.apps || [], st = p.studies || [], o = p.logoImg ? 1 : 0;
+  const miss = (list, caps) => list.filter(s => !caps.some(c => c.toLowerCase().includes(s.toLowerCase())));
+  // Exibe somente mockups e estudos reais; não cria espaços reservados vazios.
+  const items = real ? [...(o ? [{ k: p.logoImg, c: "Logotipo original", pres: 1 }] : []), ...ap, ...st] : [];
+  const tile = (a, i) => `<figure><button class="ap" data-i="${i}" aria-label="Ampliar: ${a.c}"><img src="${T(a.k)}" alt="${a.c}" loading="lazy"></button><figcaption class="glass">${a.c}</figcaption></figure>`;
+  const pn = (h, t) => t ? `<div class="pn glass"><h3>${h}</h3><p>${t}</p></div>` : "";
+  const paletteBoard = colors => {
+    const arr = colors.map(c => typeof c === "string" ? { hex: c } : c).filter(c => /^#[0-9a-f]{6}$/i.test(c.hex || ""));
+    if (!arr.length) return "";
+    const gradientStops = arr.slice(0, Math.min(4, arr.length));
+    const gradient = gradientStops.map((c, i, a) => `${c.hex} ${a.length < 2 ? 0 : i * 100 / (a.length - 1)}%`).join(", ");
+    const chip = (c, i, cls="") => { const h = c.hex.toUpperCase(), rgb = [1,3,5].map(j => parseInt(h.slice(j,j+2),16)).join(", "); return `<button class="palette-chip ${cls}" data-hex="${h}" aria-label="Copiar ${h}" style="--chip:${h}"><span class="palette-name">${c.name || c.label || c.role || (i === 0 ? "Cor principal" : i === 1 ? "Cor secundária" : "Cor de apoio")}</span><span class="palette-values"><span>HEX<br><b>${h}</b></span><span>RGB<br><b>${rgb}</b></span></span></button>`; };
+    const first = arr.slice(0,2).map((c,i) => chip(c,i,i===0?"palette-main":"palette-primary")).join("");
+    const rest = arr.slice(2).map((c,i) => chip(c,i+2)).join("");
+    const gradientCard = arr.length > 2 ? `<div class="palette-gradient-card" style="--palette-gradient:linear-gradient(110deg,${gradient})"><span class="palette-name">Branding Gradient</span><span class="palette-gradient-values">${gradientStops.map(c => c.hex.toUpperCase()).join(" · ")}</span></div>` : "";
+    return `<div class="palette-board">${first}${gradientCard}${rest}</div>`;
+  };
+  const inf = pn("Contexto e objetivo", p.ctx) + pn("Conceito criativo", p.concept) + pn("Construção do logotipo", p.logo);
+  const car = n ? `<div class="car"><div class="trk" id="trk">${p.gallery.map((g, i) => `<div class="sl">${art({ ...p, hue: [p.hue[0] + i * 25, p.hue[1]] }, g, p.title)}</div>`).join("")}</div>
+    <div class="cn glass"><button id="pv" aria-label="Imagem anterior">‹</button>${p.gallery.map(() => "<span></span>").join("")}<button id="nx" aria-label="Próxima imagem">›</button></div></div>` : "";
+  const C = $("#case"); C.style.setProperty("--a", p.hue[0]); C.style.setProperty("--b", p.hue[1]); document.body.style.setProperty("--page-a", p.hue[0]); document.body.style.setProperty("--page-b", p.hue[1]);
+  C.innerHTML = `
+  <a class="back glass" href="#projetos">← Todos os projetos</a>
+  <div class="chero${real ? " st" : ""}">${real ? `<button class="hb" data-i="0" aria-label="Ampliar imagem principal"><img src="${F(items[0].k)}" alt="${p.title}"></button>` : art(p)}<div class="tt glass"><small>${SITE.cats[p.cat]}</small><h1>${p.title}</h1></div></div>
+  ${inf ? `<div class="info">${inf}</div>` : ""}
+  ${ap.length ? `<h2>Aplicações e mockups</h2><div class="apps">${real ? ap.map((a, i) => tile(a, i + o)).join("") : ap.map(a => `<figure>${art({ ...p, hue: [p.hue[1], p.hue[0]] }, "", a)}<figcaption class="glass">${a}</figcaption></figure>`).join("")}</div>` : ""}
+  ${p.palette && p.palette.length ? `<h2>Paleta cromática</h2>${paletteBoard(p.palette)}${real ? `<p class="nt">Cores aproximadas da identidade. Clique em uma amostra para copiar o HEX.</p>` : ""}` : ""}
+  ${p.fonts && p.fonts.length ? `<h2>Tipografia</h2>${p.fonts.map(f => `<p>${f}</p>`).join("")}` : ""}
+  ${real ? (st.length ? `<h2>Galeria</h2><div class="apps">${st.map((a, i) => tile(a, i + o + ap.length)).join("")}</div>` : "") : `<h2>Galeria</h2>${car}`}
+  <h2>Outros projetos</h2><div class="oth">${others.map(x => `<a class="glass" href="#${x.id}">${x.title}</a>`).join("")}</div><div style="height:40px"></div>`;
+  C.onclick = e => { const b = e.target.closest("[data-i]"); if (b) return lbOpen(items, +b.dataset.i, p); const w = e.target.closest(".palette-chip"); if (w) copy(w); };
+  if (n) {
+    let i = 0;
+    const go = k => { i = (k + n) % n; $("#trk").style.transform = `translateX(-${i * 100}%)`; document.querySelectorAll(".cn span").forEach((s, j) => s.classList.toggle("on", j === i)); };
+    $("#pv").onclick = () => go(i - 1); $("#nx").onclick = () => go(i + 1);
+    $(".car").onkeydown = e => { if (e.key === "ArrowLeft") go(i - 1); if (e.key === "ArrowRight") go(i + 1); };
+    go(0);
+  }
+  document.title = `${p.title} — ${SITE.name}`;
+}
+
+/* visualização ampliada (lightbox): zoom, arraste, teclado e alternância original/apresentação */
+const L = $("#lb"), LI = $("#lbi"), LS = $("#lbst"); let lb = { a: [], i: 0, z: 1, x: 0, y: 0, pr: false, ret: null }, dr = null;
+const lbT = () => LI.style.transform = `translate(${lb.x}px,${lb.y}px) scale(${lb.z})`;
+function lbShow() {
+  const it = lb.a[lb.i]; LI.src = F(it.k); LI.alt = it.c; lb.z = 1; lb.x = lb.y = 0; lbT();
+  if (!it.pres) lb.pr = false; L.classList.toggle("pr", lb.pr);
+  $("#lbm").hidden = !it.pres; $("#lbm").textContent = lb.pr ? "Ver original" : "Ver apresentação";
+  $("#lbc").textContent = `${it.c} · ${lb.i + 1}/${lb.a.length}`; $("#lbpv").hidden = $("#lbnx").hidden = lb.a.length < 2;
+}
+function lbOpen(a, i, p) { lb.a = a; lb.i = i; lb.pr = false; lb.ret = document.activeElement; L.style.setProperty("--a", p.hue[0]); L.style.setProperty("--b", p.hue[1]); L.hidden = false; document.body.style.overflow = "hidden"; lbShow(); $("#lbx").focus(); }
+const lbClose = () => { L.hidden = true; document.body.style.overflow = ""; lb.ret && lb.ret.focus(); };
+const lbGo = d => { lb.i = (lb.i + d + lb.a.length) % lb.a.length; lbShow(); };
+const lbZ = z => { lb.z = Math.min(5, Math.max(1, z)); if (lb.z === 1) lb.x = lb.y = 0; lbT(); };
+$("#lbx").onclick = lbClose; $("#lbpv").onclick = () => lbGo(-1); $("#lbnx").onclick = () => lbGo(1);
+$("#lbzi").onclick = () => lbZ(lb.z + .5); $("#lbzo").onclick = () => lbZ(lb.z - .5); $("#lbm").onclick = () => { lb.pr = !lb.pr; lbShow(); };
+LS.onclick = e => { if (e.target === LS) lbClose(); }; LI.ondblclick = () => lbZ(lb.z > 1 ? 1 : 2.5);
+LS.onwheel = e => { e.preventDefault(); lbZ(lb.z + (e.deltaY < 0 ? .4 : -.4)); };
+LI.onpointerdown = e => { if (lb.z > 1) { dr = { x: e.clientX - lb.x, y: e.clientY - lb.y }; LI.setPointerCapture(e.pointerId); } };
+LI.onpointermove = e => { if (dr) { lb.x = e.clientX - dr.x; lb.y = e.clientY - dr.y; lbT(); } }; LI.onpointerup = () => dr = null;
+addEventListener("keydown", e => { if (L.hidden) return; if (e.key === "Escape") lbClose(); if (e.key === "ArrowRight") lbGo(1); if (e.key === "ArrowLeft") lbGo(-1); if (e.key === "+" || e.key === "=") lbZ(lb.z + .5); if (e.key === "-") lbZ(lb.z - .5); });
+/* rotas por hash: #p-1 abre o estudo de caso */
+function route() {
+  const h = location.hash.slice(1), p = P.find(x => x.id === h);
+  $("#home").hidden = !!p; $("#case").hidden = !p;
+  if (p) { showCase(p); scrollTo(0, 0); }
+  else { document.body.style.setProperty("--page-a", "215"); document.body.style.setProperty("--page-b", "205"); document.title = `${SITE.name} — Portfólio`; const el = h && document.getElementById(h); el ? el.scrollIntoView() : scrollTo(0, 0); }
+  $("#menu").classList.remove("open"); $("#bg").setAttribute("aria-expanded", "false");
+}
+// Garante que qualquer clique no cartão abra o estudo de caso.
+document.addEventListener("click", e => {
+  const card = e.target.closest && e.target.closest("#grid a.card");
+  if (!card) return;
+  const raw = card.getAttribute("href") || "";
+  if (!raw.startsWith("#")) return;
+  const id = decodeURIComponent(raw.slice(1));
+  if (!P.some(item => item.id === id)) return;
+  e.preventDefault();
+  if (location.hash !== raw) history.pushState(null, "", raw);
+  route();
+}, true);
+addEventListener("popstate", route);
+addEventListener("hashchange", route); route();
+
+/* menu, progresso, link ativo */
+$("#bg").onclick = () => { const o = $("#menu").classList.toggle("open"); $("#bg").setAttribute("aria-expanded", o); };
+addEventListener("keydown", e => { if (e.key === "Escape") { $("#menu").classList.remove("open"); $("#bg").setAttribute("aria-expanded", "false"); } });
+addEventListener("scroll", () => {
+  const d = document.documentElement; $("#bar").style.transform = `scaleX(${scrollY / Math.max(1, d.scrollHeight - innerHeight)})`;
+  let cur = ""; ["projetos", "apresentacao", "estudio", "contato"].forEach(id => { const el = document.getElementById(id); if (el && !$("#home").hidden && el.getBoundingClientRect().top < innerHeight * .4) cur = id; });
+  document.querySelectorAll("#menu a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + cur));
+}, { passive: true });
+
+/* vidro reage ao ponteiro; lente do hero; inclinação dos cards */
+if (!reduce) {
+  addEventListener("pointermove", e => {
+    const g = e.target.closest && e.target.closest(".glass,.card"); if (!g) return;
+    const r = g.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    g.style.setProperty("--mx", x * 100 + "%"); g.style.setProperty("--my", y * 100 + "%");
+    if (g.classList.contains("card")) { g.style.setProperty("--ry", (x - .5) * 6 + "deg"); g.style.setProperty("--rx", (.5 - y) * 6 + "deg"); }
+  }, { passive: true });
+  document.addEventListener("pointerout", e => { const c = e.target.closest && e.target.closest(".card"); if (c) { c.style.setProperty("--rx", "0deg"); c.style.setProperty("--ry", "0deg"); } });
+  $("#stage").addEventListener("pointermove", e => { const r = e.currentTarget.getBoundingClientRect(); $("#lens").style.setProperty("--lx", (e.clientX - r.left) / r.width * 100 + "%"); $("#lens").style.setProperty("--ly", (e.clientY - r.top) / r.height * 100 + "%"); });
+}
+const stage = $("#stage"), lens = $("#lens");
+function moveLens(e) {
+  if (!stage || !lens) return;
+  const r = stage.getBoundingClientRect();
+  lens.style.setProperty("--lx", ((e.clientX - r.left) / r.width * 100) + "%");
+  lens.style.setProperty("--ly", ((e.clientY - r.top) / r.height * 100) + "%");
+}
+if (stage) { stage.addEventListener("pointermove", moveLens, {passive:true}); stage.addEventListener("mousemove", moveLens, {passive:true}); }
+rv();
+// Bloqueia o menu do botão direito somente sobre imagens.
+document.addEventListener("contextmenu", e => {
+  if (e.target.closest && e.target.closest("img")) e.preventDefault();
+}, true);
+
+</script>
+</body>
+</html>
